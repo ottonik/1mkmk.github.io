@@ -70,8 +70,8 @@
           if (intid) clearInterval(intid);
         });
       document.addEventListener("mcdBridgeReady", function (e) {
-	  console.log(e);
-        console.log(mcd);
+	    
+        console.log(mcd.bridge);
         let offerActivation = mcd.bridge.message("offerActivation");
         let user = mcd.bridge.message("user");
         user.send({ promptlogin: true });
@@ -88,7 +88,7 @@
           coupons[Math.floor(Math.random() * coupons.length) + 1 - 1];
 
         offerActivation.send({
-             loyaltyId: 985,
+             loyaltyId: 2400,
               autoActivate: false,
               rewardId: 95944
         });
@@ -99,7 +99,7 @@
           console.warn("MCD ERROR", loyalityId, JSON.stringify(error));
         });
         offerActivation.on("done", function () {
-          console.log("corn done", loyalityId);
+          console.log("corn done 11", loyalityId);
         });
       }
     </script>
