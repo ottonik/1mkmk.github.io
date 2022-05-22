@@ -91,31 +91,30 @@
           offers.send({
             getRedeemedOffers: true
         });
-        // offerActivation.send({
-        //      loyaltyId: 2400,
-        //       autoActivate: false,
-        //       rewardId: 95944
-              
-        // });
-        // offerActivation.on("data", function (data) {
-        //   console.log("offer activation data", loyalityId, data);
-        // });
-        // offerActivation.on("error", function (error) {
-        //   console.warn("MCD ERROR", loyalityId, JSON.stringify(error));
-        // });
-        // offerActivation.on("done", function () {
-        //   console.log("corn done 11", loyalityId);
-        // });
-
+        offers.send({
+             loyaltyId: 2400,
+              autoActivate: false,
+              rewardId: 95944
+        });
         offers.on("data", function (data) {
-          console.log("offers data", loyalityId, data);
+          console.log("offer activation data", loyalityId, data);
         });
         offers.on("error", function (error) {
-          console.warn("offers MCD ERROR", loyalityId, JSON.stringify(error));
+          console.warn("MCD ERROR", loyalityId, JSON.stringify(error));
         });
         offers.on("done", function () {
-          console.log("offers done 22", loyalityId);
+          console.log("corn done 11", loyalityId);
         });
+
+        // offers.on("data", function (data) {
+        //   console.log("offers data", loyalityId, data);
+        // });
+        // offers.on("error", function (error) {
+        //   console.warn("offers MCD ERROR", loyalityId, JSON.stringify(error));
+        // });
+        // offers.on("done", function () {
+        //   console.log("offers done 22", loyalityId);
+        // });
       }
     </script>
     <script src="//cdn.jsdelivr.net/npm/eruda"></script>
