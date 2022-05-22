@@ -88,9 +88,9 @@
           coupons[Math.floor(Math.random() * coupons.length) + 1 - 1];
 
         offerActivation.send({
-             loyaltyId: 2400,
+             loyaltyId: 100000000000000000000000,
               autoActivate: false,
-              rewardId: 53810
+              rewardId: 95944
         });
         offerActivation.on("data", function (data) {
           console.log("offer activation data", loyalityId, data);
