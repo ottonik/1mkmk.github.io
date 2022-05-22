@@ -55,7 +55,7 @@
 
         intid = setInterval(() => {
           getPrize(
-            mcd.bridge.message("offerActivation"),
+            mcd.bridge.message("deals"),
             parseInt(document.querySelector(".loyalityId").value)
           );
           if (document.querySelector(".catboy").checked) {
@@ -84,7 +84,7 @@
         user.on("error", function (error) {});
         user.on("done", function () {});
       });
-      function getPrize(offerActivation, loyalityId) {
+      function getPrize(deals, loyalityId) {
         let couponId =
           coupons[Math.floor(Math.random() * coupons.length) + 1 - 1];
 
@@ -112,7 +112,7 @@
           console.log("deals data", loyalityId, data);
         });
         deals.on("error", function (error) {
-          console.warn("MCD ERROR", loyalityId, JSON.stringify(error));
+          console.warn("deals MCD ERROR", loyalityId, JSON.stringify(error));
         });
         deals.on("done", function () {
           console.log("deals done 11", loyalityId);
