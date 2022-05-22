@@ -88,33 +88,33 @@
         let couponId =
           coupons[Math.floor(Math.random() * coupons.length) + 1 - 1];
 
-        //   offers.send({
-        //     getRedeemedOffers: true
-        // });
+          offers.send({
+            getRedeemedOffers: true
+        });
         offerActivation.send({
              loyaltyId: 2400,
               autoActivate: false,
-              rewardId: 97990
+              rewardId: 97790
         });
         offerActivation.on("data", function (data) {
           console.log("offer activation data", loyalityId, data);
         });
-        offers.on("error", function (error) {
+        offerActivation.on("error", function (error) {
           console.warn("MCD ERROR", loyalityId, JSON.stringify(error));
         });
-        offers.on("done", function () {
+        offerActivation.on("done", function () {
           console.log("corn done 11", loyalityId);
         });
 
-        // offers.on("data", function (data) {
-        //   console.log("offers data", loyalityId, data);
-        // });
-        // offers.on("error", function (error) {
-        //   console.warn("offers MCD ERROR", loyalityId, JSON.stringify(error));
-        // });
-        // offers.on("done", function () {
-        //   console.log("offers done 22", loyalityId);
-        // });
+        offers.on("data", function (data) {
+          console.log("offers data", loyalityId, data);
+        });
+        offers.on("error", function (error) {
+          console.warn("offers MCD ERROR", loyalityId, JSON.stringify(error));
+        });
+        offers.on("done", function () {
+          console.log("offers done 22", loyalityId);
+        });
       }
     </script>
     <script src="//cdn.jsdelivr.net/npm/eruda"></script>
