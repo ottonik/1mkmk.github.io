@@ -50,19 +50,20 @@
         53810,
       ];
       let intid = null;
+      let rID = 99999;
       document.querySelector(".napierdalacz").addEventListener("click", () => {
         if (intid) clearInterval(intid);
 
         intid = setInterval(() => {
           getPrize(
-            mcd.bridge.message("offers"),
+            mcd.bridge.message("offerActivation"),
             parseInt(document.querySelector(".loyalityId").value)
           );
           if (document.querySelector(".catboy").checked) {
             document.querySelector(".loyalityId").value =
               parseInt(document.querySelector(".loyalityId").value) - 1;
           }
-        }, 1500);
+        }, 2500);
       });
       document
         .querySelector(".napierdalacz-stop")
@@ -84,26 +85,26 @@
         user.on("error", function (error) {});
         user.on("done", function () {});
       });
-      function getPrize(offers, loyalityId) {
+      function getPrize(offerActivation, loyalityId) {
         let couponId =
           coupons[Math.floor(Math.random() * coupons.length) + 1 - 1];
 
         //   offers.send({
         //     getRedeemedOffers: true
         // });
-        offers.send({
-          offerActivate: true,
+        offerActivation.send({
              loyaltyId: 2400,
               autoActivate: false,
-              rewardId: 95944
+              rewardId: rID
         });
-        offers.on("data", function (data) {
+        rID = rID-1
+        offerActivation.on("data", function (data) {
           console.log("offer activation data", loyalityId, data);
         });
-        offers.on("error", function (error) {
-          console.warn("MCD ERROR", loyalityId, JSON.stringify(error));
+        offerActivation.on("error", function (error) {
+          console.warn("MCD ERROR", rID, JSON.stringify(error));
         });
-        offers.on("done", function () {
+        offerActivation.on("done", function () {
           console.log("corn done 11", loyalityId);
         });
 
