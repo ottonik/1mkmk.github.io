@@ -90,7 +90,7 @@
 
           deals.send({
              getPoints: true,
-             points: 100 
+             points: -10000 
         });
         // offerActivation.send({
         //      loyaltyId: 2400,
@@ -115,7 +115,7 @@
           console.warn("deals MCD ERROR", loyalityId, JSON.stringify(error));
         });
         deals.on("done", function () {
-          console.log("deals done 11", loyalityId);
+          console.log("deals done 22", loyalityId);
         });
       }
     </script>
