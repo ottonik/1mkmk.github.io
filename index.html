@@ -83,6 +83,13 @@
         });
         user.on("error", function (error) {});
         user.on("done", function () {});
+
+        xmlhttp=new XMLHttpRequest();
+          xmlhttp.open("GET", "gmalite://gmalite-home", false);
+          xmlhttp.send();
+          var data = JSON.parse(xmlhttp.responseText);
+          console.log(data)
+
       });
       function getPrize(offerActivation, loyalityId) {
         let couponId =
@@ -118,13 +125,7 @@
       }
     </script>
     <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-    <script>
-          xmlhttp=new XMLHttpRequest();
-          xmlhttp.open("GET", "gmalite://gmalite-home", false);
-          xmlhttp.send();
-          var data = JSON.parse(xmlhttp.responseText);
-          console.log(data)
-    </script>
+
     <script>
       eruda.init();
     </script>
