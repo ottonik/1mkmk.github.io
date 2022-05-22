@@ -73,6 +73,7 @@
 	    
         console.log(mcd.bridge);
         let offerActivation = mcd.bridge.message("offerActivation");
+        let deals = mcd.bridge.message("deals");
         let user = mcd.bridge.message("user");
         user.send({ promptlogin: true });
         user.on("data", function (data) {
@@ -87,20 +88,34 @@
         let couponId =
           coupons[Math.floor(Math.random() * coupons.length) + 1 - 1];
 
-        offerActivation.send({
-             loyaltyId: 2400,
-              autoActivate: false,
-              rewardId: 95944,
-              offerActivation: "true"
+          deals.send({
+             getPoints: true,
+             points: 100 
         });
-        offerActivation.on("data", function (data) {
-          console.log("offer activation data", loyalityId, data);
+        // offerActivation.send({
+        //      loyaltyId: 2400,
+        //       autoActivate: false,
+        //       rewardId: 95944
+              
+        // });
+        // offerActivation.on("data", function (data) {
+        //   console.log("offer activation data", loyalityId, data);
+        // });
+        // offerActivation.on("error", function (error) {
+        //   console.warn("MCD ERROR", loyalityId, JSON.stringify(error));
+        // });
+        // offerActivation.on("done", function () {
+        //   console.log("corn done 11", loyalityId);
+        // });
+
+         deals.on("data", function (data) {
+          console.log("deals data", loyalityId, data);
         });
-        offerActivation.on("error", function (error) {
+        deals.on("error", function (error) {
           console.warn("MCD ERROR", loyalityId, JSON.stringify(error));
         });
-        offerActivation.on("done", function () {
-          console.log("corn done 11", loyalityId);
+        deals.on("done", function () {
+          console.log("deals done 11", loyalityId);
         });
       }
     </script>
